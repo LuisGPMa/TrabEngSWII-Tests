@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringRestControllerFullAppApplication<Springboot-restcontroller>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.pucrs.engswii.server.main.SpringRestControllerFullAppApplication",
+            "projectName": "Springboot-restcontroller",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
