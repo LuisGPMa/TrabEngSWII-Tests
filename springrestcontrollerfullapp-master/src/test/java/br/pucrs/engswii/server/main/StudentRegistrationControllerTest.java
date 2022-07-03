@@ -24,21 +24,18 @@ public class StudentRegistrationControllerTest {
 	@Test
 	public void createStudentTest() throws Exception {
 
-		String exampleUserJson = "{\"userID\":\"14\",\"password\":\"123\"}";
+		String exampleStudentJson = "{\"name\":\"Marco\",\"age\":21,\"registrationNumber\":\"1\",\"registrationStatus\":\"New Student successfully added\"}";
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
-				.post("/register/user")
-				.accept(MediaType.APPLICATION_JSON).content(exampleUserJson)
+				.post("/register/student")
+				.accept(MediaType.APPLICATION_JSON).content(exampleStudentJson)
 				.contentType(MediaType.APPLICATION_JSON);
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse());
-		String expected = "{\"userID\":\"14\",\"password\":\"123\",\"isLoggedIn\":false,\"registrationStatus\":\"New user successfully created\"}";
+		String expected = "{\"name\":\"Marco\",\"age\":21,\"registrationNumber\":\"1\",\"registrationStatus\":\"New Student successfully added\"}";
 
-		// {"id":"Course1","name":"Spring","description":"10 Steps, 25 Examples and 10K Students","steps":["Learn Maven","Import Project","First Example","Second Example"]}
-
-//		assertEquals("meu json aqui", result.getResponse());
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
