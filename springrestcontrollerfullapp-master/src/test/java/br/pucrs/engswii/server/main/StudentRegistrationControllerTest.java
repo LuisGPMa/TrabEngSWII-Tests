@@ -1,9 +1,14 @@
 package br.pucrs.engswii.server.main;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
+import br.pucrs.engswii.beans.LoginSystem;
+import br.pucrs.engswii.beans.User;
 import br.pucrs.engswii.controllers.StudentRegistrationController;
 import br.pucrs.engswii.controllers.UserRegistrationController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +26,22 @@ public class StudentRegistrationControllerTest {
     @Autowired
 	private MockMvc mockMvc;
 
+	@MockBean   
+	private LoginSystem loginSystem;
+
+	@BeforeEach
+	public void setup(){
+		User usr = mock(User.class);
+		LoginSystem.getInstance().setUserLogged(usr);
+	}
+
 	@Test
 	public void createStudentTest() throws Exception {
 
 		String exampleStudentJson = "{\"name\":\"Marco\",\"age\":21,\"registrationNumber\":\"1\",\"registrationStatus\":\"New Student successfully added\"}";
+
+		// Mockito.when(
+		// 	loginSystem.getUserLogged()).thenReturn(new User());
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders
 				.post("/register/student")
@@ -36,7 +53,6 @@ public class StudentRegistrationControllerTest {
 		System.out.println(result.getResponse());
 		String expected = "{\"name\":\"Marco\",\"age\":21,\"registrationNumber\":\"1\",\"registrationStatus\":\"New Student successfully added\"}";
 
-		JSONAssert.assertEquals(expected, result.getResponse()
-				.getContentAsString(), false);
+		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
 	}
-}
+} 
