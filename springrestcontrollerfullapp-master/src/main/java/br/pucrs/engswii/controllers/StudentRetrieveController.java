@@ -6,6 +6,7 @@ import javax.annotation.Generated;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,8 @@ import br.pucrs.engswii.beans.Student;
 import br.pucrs.engswii.beans.StudentRegistration;
 
 @RestController
+//@RequestMapping(value = "/rest")
+@TestConfiguration
 public class StudentRetrieveController {
 
 	LoginSystem loginSystem = LoginSystem.getInstance();
