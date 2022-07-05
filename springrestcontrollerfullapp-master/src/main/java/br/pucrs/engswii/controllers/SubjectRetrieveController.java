@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.pucrs.engswii.beans.*;
 
 @RestController
+@TestConfiguration
 public class SubjectRetrieveController {
 	LoginSystem loginSystem = LoginSystem.getInstance();
 	//	@RequestMapping(method = RequestMethod.GET, value="/student/allstudent")
