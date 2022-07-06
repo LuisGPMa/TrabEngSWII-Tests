@@ -16,6 +16,7 @@ import br.pucrs.engswii.beans.User;
 import br.pucrs.engswii.controllers.StudentRegistrationController;
 import br.pucrs.engswii.controllers.StudentRetrieveController;
 import br.pucrs.engswii.controllers.SubjectRegistrationController;
+import br.pucrs.engswii.controllers.SubjectRetrieveController;
 import br.pucrs.engswii.controllers.UserRegistrationController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -29,9 +30,9 @@ import org.springframework.http.MediaType;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 
-@WebMvcTest(value = SubjectRegistrationController.class)
+@WebMvcTest(value = SubjectRetrieveController.class)
 //@RunWith(SpringRunner.class)
-@Import(SubjectRegistrationController.class)
+@Import(SubjectRetrieveController.class)
 public class SubjectRetrieveControllerTest {
     @Autowired
 	private MockMvc mockMvc;
